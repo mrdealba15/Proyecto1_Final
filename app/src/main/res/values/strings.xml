@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">"App Rubric"</string>
+    <string name="item_inicio">Inicio</string>
+    <string name="item_cursos">Cursos</string>
+    <string name="item_rubricas">Rubricas</string>
+    <string name="item_evaluaciones">Evaluaciones</string>
+
+    <string name="title_activity_curso">Curso</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="add_button">Añadir</string>
+    <string name="update_button">Actualizar</string>
+    <string name="delete_button">borrar</string>
+    <string name="fab">Añadir Amigo</string>
+    <string name="title_activity_transition_edit">Editar Nombre Activity</string>
+    <string name="title_activity_transition_add">Añadir Nombre Activity</string>
+
+    <string-array name="names_array">
+        <item>Miguel</item>
+        <item>Juliana</item>
+        <item>Cristobal</item>
+    </string-array>
+
+    <string-array name="evaluations_names_array">
+        <item>"Evaluacion 1"</item>
+        <item>"Evaluacion 2"</item>
+        <item>"Evaluacion 3"</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
