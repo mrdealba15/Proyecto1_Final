@@ -28,20 +28,6 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/editText25" />
 
     <EditText
-        android:id="@+id/editText25"
-        android:layout_width="97dp"
-        android:layout_height="38dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="-3dp"
-        android:ems="10"
-        android:hint="Peso %"
-        android:inputType="number"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toRightOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/editText18" />
-
-    <EditText
         android:id="@+id/editText"
         android:layout_width="0dp"
         android:layout_height="37dp"
@@ -58,6 +44,20 @@
         app:layout_constraintLeft_toLeftOf="@+id/guideline2"
         app:layout_constraintRight_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText25"
+        android:layout_width="97dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-3dp"
+        android:ems="10"
+        android:hint="Peso %"
+        android:inputType="number"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/editText18" />
 
     <EditText
         android:id="@+id/editText16"
