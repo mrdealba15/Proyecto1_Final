@@ -39,7 +39,7 @@
                 android:id="@+id/editar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="OnclickEditar"
+                android:onClick="OnclickEditar_rubrica"
                 android:text="Editar"
                  />
 
@@ -47,14 +47,14 @@
                 android:id="@+id/ver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="OnclickVer"
+                android:onClick="OnclickVer_rubrica"
                 android:text="Ver"
                 />
             <Button
                 android:id="@+id/eliminar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="OnclickEliminar"
+                android:onClick="OnclickEliminar_rubrica"
                 android:text="Eliminar"
                 />
         </LinearLayout>

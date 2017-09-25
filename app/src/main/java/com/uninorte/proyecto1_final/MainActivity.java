@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity{
             fragmentManager
                     .beginTransaction()
                     .replace(R.id.contenedor_principal, fragmentoGenerico)
+                    .addToBackStack(null)
                     .commit();
         }
 
@@ -83,16 +84,53 @@ public class MainActivity extends AppCompatActivity{
         setTitle(itemDrawer.getTitle());
     }
 
+    @Override
+    public void onBackPressed(){
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 0){
+            super.onBackPressed();
+
+        } else{
+            getFragmentManager().popBackStack();
+        }
+    }
+
+
 
     public void OnclickCurso(View view){
         FragmentManager fragmentManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = new Fragmento_curso();
-        fragmentTransaction.replace(R.id.contenedor_principal, fragment);
+        fragmentTransaction.replace(R.id.contenedor_principal, fragment).addToBackStack(null);
         fragmentTransaction.commit();
     }
 
+    public void onClickEvaluations(View view){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment = new Fragmento_estudiante_evaluacion();
+        fragmentTransaction.replace(R.id.contenedor_principal, fragment).addToBackStack(null);
+        fragmentTransaction.commit();
+    }
 
+    public void OnclickEditar_rubrica(View view){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment = new Fragmento_categorias();
+        fragmentTransaction.replace(R.id.contenedor_principal, fragment).addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public void onClickElementos(View view){
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment = new Fragmento_elementos();
+        fragmentTransaction.replace(R.id.contenedor_principal, fragment).addToBackStack(null);
+        fragmentTransaction.commit();
+
+    }
 
 
 
