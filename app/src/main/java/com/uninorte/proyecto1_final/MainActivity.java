@@ -2,6 +2,7 @@ package com.uninorte.proyecto1_final;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.TextView;
 
 import com.uninorte.proyecto1_final.fragmentos.Fragmento_curso;
 import com.uninorte.proyecto1_final.fragmentos.Fragmento_rubricas;
@@ -86,8 +88,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void OnclickCurso(View view) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = new Fragmento_curso();
+
+        Bundle bundle = new Bundle();
+        View p = (View)view.getParent();
+        TextView id = p.findViewById(R.id.id);
+        bundle.putLong("idCurso", Long.valueOf(id.getText().toString()));
+        fragment.setArguments(bundle);
+
         fragmentTransaction.replace(R.id.contenedor_principal, fragment);
         fragmentTransaction.commit();
     }
