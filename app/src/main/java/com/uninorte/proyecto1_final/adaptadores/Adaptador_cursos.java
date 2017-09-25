@@ -50,14 +50,12 @@ public class Adaptador_cursos extends RecyclerView.Adapter<Adaptador_cursos.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
         public TextView inicial;
-        public Button Ir;
         public TextView nombre;
         public TextView id;
 
         public ViewHolder(View v) {
             super(v);
             inicial = (TextView) v.findViewById(R.id.cursos_textView);
-            Ir = (Button) v.findViewById(R.id.Ir);
             nombre = (TextView) v.findViewById(R.id.name_curso);
             id = (TextView) v.findViewById(R.id.id);
         }

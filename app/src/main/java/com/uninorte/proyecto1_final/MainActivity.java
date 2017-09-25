@@ -92,8 +92,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = new Fragmento_curso();
 
         Bundle bundle = new Bundle();
-        View p = (View)view.getParent();
-        TextView id = p.findViewById(R.id.id);
+        TextView id = view.findViewById(R.id.id);
         bundle.putLong("idCurso", Long.valueOf(id.getText().toString()));
         fragment.setArguments(bundle);
 
