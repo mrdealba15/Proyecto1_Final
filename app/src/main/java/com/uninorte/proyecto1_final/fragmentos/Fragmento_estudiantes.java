@@ -12,8 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.uninorte.proyecto1_final.R;
 import com.uninorte.proyecto1_final.adaptadores.Adaptador_estudiante;
+import com.uninorte.proyecto1_final.modelos.Estudiante;
+
+import java.util.List;
 
 
 /**
@@ -22,6 +26,8 @@ import com.uninorte.proyecto1_final.adaptadores.Adaptador_estudiante;
 public class Fragmento_estudiantes extends Fragment {
 
 
+    RecyclerView reciclador;
+    private Adaptador_estudiante adaptador;
     private static int[] colors;
 
     private LinearLayoutManager linearLayout;
@@ -42,11 +48,12 @@ public class Fragmento_estudiantes extends Fragment {
 
         colors = getResources().getIntArray(R.array.initial_colors);
 
-        RecyclerView reciclador = (RecyclerView)view.findViewById(R.id.reciclador);
+        reciclador = (RecyclerView)view.findViewById(R.id.reciclador);
         linearLayout = new LinearLayoutManager(getActivity());
         reciclador.setLayoutManager(linearLayout);
 
-        Adaptador_estudiante adaptador = new Adaptador_estudiante();
+        List<Estudiante> estudiantes = SQLite.select().from(Estudiante.class).queryList();
+        adaptador = new Adaptador_estudiante(estudiantes);
         reciclador.setAdapter(adaptador);
 
 

@@ -71,5 +71,9 @@ public class Adaptador_estudiante extends RecyclerView.Adapter<Adaptador_estudia
         }
     }
 
+    public void addEstudiante (Estudiante estudiante) {
+        estudiantes.add(estudiante);
+        this.notifyDataSetChanged();
+    }
 
 }

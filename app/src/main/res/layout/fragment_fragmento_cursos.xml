@@ -35,7 +35,6 @@
         android:layout_marginEnd="25dp"
         android:clickable="true"
         android:elevation="6dp"
-        android:onClick="AddCurso"
         android:src="@android:drawable/ic_input_add"
         android:tint="@android:color/white"
         android:transitionName="fab_transition" />

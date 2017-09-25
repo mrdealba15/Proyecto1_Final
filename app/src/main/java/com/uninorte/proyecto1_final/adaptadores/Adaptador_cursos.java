@@ -67,6 +67,10 @@ public class Adaptador_cursos extends RecyclerView.Adapter<Adaptador_cursos.View
         }
     }
 
+    public void addCurso (Curso curso) {
+        cursos.add(curso);
+        this.notifyDataSetChanged();
+    }
 
 }
 
