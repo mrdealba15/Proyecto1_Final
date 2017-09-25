@@ -18,7 +18,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".CursoActivity"></activity>
-        <activity android:name=".Crear_rubrica"></activity>
     </application>
 
 </manifest>
