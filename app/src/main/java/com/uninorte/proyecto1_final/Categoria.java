@@ -18,6 +18,16 @@ public class Categoria {
        this.Peso=Peso;
     }
 
+    public float getPeso() {
+        return Peso;
+    }
+
+    public void setPeso(float peso) {
+        this.Peso = peso;
+    }
+
+    public static final List<Categoria> Categorias = new ArrayList<Categoria>();
+
     public  List<Elemento> Elementos = new ArrayList<Elemento>();
 
     public long getId() {
@@ -49,6 +59,15 @@ public class Categoria {
         }
 
     }
+
+    static {
+        Categorias.add(new Categoria("Categoria 1",(float) 0.2));
+        Categorias.add(new Categoria("Categoria 2", (float) 0.3));
+
+    }
+
+
+
 
 
 

@@ -29,56 +29,55 @@ import java.util.List;
  * Created by win 8.1 pro on 24/09/2017.
  */
 
-public class Adaptador_estudiante extends RecyclerView.Adapter<Adaptador_estudiante.ViewHolder> {
+public class Adaptador_elementos extends RecyclerView.Adapter<Adaptador_elementos.ViewHolder> {
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
-        public TextView inicial;
-        public Button Delete;
         public TextView nombre;
-        public Button evaluaciones;
+        public Button Delete;
+        public TextView Peso;
+        public Button editar;
 
 
         public ViewHolder(View v) {
             super(v);
-            inicial = (TextView) v.findViewById(R.id.initial);
-            Delete = (Button) v.findViewById(R.id.delete_button);
-            evaluaciones = (Button) v.findViewById(R.id.evaluation_botton);
-            nombre = (TextView) v.findViewById(R.id.name);
+            nombre = (TextView) v.findViewById(R.id.elementos_textview);
+            Delete = (Button) v.findViewById(R.id.delete_elemento);
+            editar = (Button) v.findViewById(R.id.editar_elementos);
+            Peso = (TextView) v.findViewById(R.id.Peso);
 
         }
     }
 
-    public Adaptador_estudiante() {
+    public Adaptador_elementos() {
     }
 
 
     public int getItemCount() {
-        return Estudiante.Estudiantes.size();
+        return Elemento.Elementos.size();
     }
 
     @Override
-    public Adaptador_estudiante.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public Adaptador_elementos.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.layout_estudiantes, viewGroup, false);
-        return new Adaptador_estudiante.ViewHolder(v);
+                .inflate(R.layout.layout_elementos, viewGroup, false);
+        return new Adaptador_elementos.ViewHolder(v);
     }
 
 
 
 
     @Override
-    public void onBindViewHolder(Adaptador_estudiante.ViewHolder viewHolder, int i) {
-        Estudiante item = Estudiante.Estudiantes.get(i);
+    public void onBindViewHolder(Adaptador_elementos.ViewHolder viewHolder, int i) {
+        Elemento item = Elemento.Elementos.get(i);
 
         //Glide.with(viewHolder.itemView.getContext())
-           //     .load(item.getName());
+        //     .load(item.getName());
 
 
-
-        viewHolder.inicial.setText(item.getName());
-        viewHolder.nombre.setText(item.getCodigo());
+        viewHolder.nombre.setText(item.getName());
+        viewHolder.Peso.setText(item.getPeso()+"");
 
 
     }

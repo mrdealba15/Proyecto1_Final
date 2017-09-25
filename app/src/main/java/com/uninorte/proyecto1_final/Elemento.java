@@ -1,5 +1,8 @@
 package com.uninorte.proyecto1_final;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by win 8.1 pro on 24/09/2017.
  */
@@ -23,6 +26,16 @@ public class Elemento {
         this.Peso=Peso;
     }
 
+    public static final List<Elemento> Elementos = new ArrayList<Elemento>();
+
+
+    public float getPeso() {
+        return Peso;
+    }
+
+    public void setPeso(float peso) {
+        this.Peso = peso;
+    }
 
     public String getName() {
         return name;
@@ -47,5 +60,12 @@ public class Elemento {
     public String getL4(){
         return L4;
     }
+
+    static {
+        Elementos.add(new Elemento("Elemento 1", "Excelente", "Bueno", "Regular","Malo", (float)0.2));
+        Elementos.add(new Elemento("Elemento 2", "Excelente", "Bueno", "Regular","Malo", (float)0.3));
+
+    }
+
 
 }

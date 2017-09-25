@@ -22,4 +22,10 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
         android:hint="Escriba código del curso"/>
+
+    <Button
+        android:id="@+id/button_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar" />
 </LinearLayout>
