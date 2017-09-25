@@ -26,7 +26,7 @@ public class Fragmento_elementos extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fragmento_elementos, container, false);
 
-        reciclador = (RecyclerView) view.findViewById(R.id.reciclador_cursos);
+        reciclador = (RecyclerView) view.findViewById(R.id.reciclador_elementos);
         layoutManager = new LinearLayoutManager(getActivity());
         reciclador.setLayoutManager(layoutManager);
 
