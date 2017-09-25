@@ -72,7 +72,7 @@ public class Estudiante extends BaseModel {
         return codigo;
     }
 
-    public void setCodigo(String name) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

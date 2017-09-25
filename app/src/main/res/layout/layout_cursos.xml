@@ -51,6 +51,14 @@
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/text_size"
                 android:transitionName="name_transition" />
+
+            <TextView
+                android:id="@+id/id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:visibility="gone" />
         </LinearLayout>
 
     </LinearLayout>
