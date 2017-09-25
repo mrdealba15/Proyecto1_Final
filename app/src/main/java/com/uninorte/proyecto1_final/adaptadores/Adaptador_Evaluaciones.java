@@ -24,6 +24,10 @@ public class Adaptador_Evaluaciones extends RecyclerView.Adapter<Adaptador_Evalu
 
     }
 
+    public Adaptador_Evaluaciones(List<Evaluacion> evaluaciones) {
+        this.evaluaciones = evaluaciones;
+    }
+
     public int getItemCount() {
         return this.evaluaciones.size();
     }
@@ -43,8 +47,6 @@ public class Adaptador_Evaluaciones extends RecyclerView.Adapter<Adaptador_Evalu
         //     .load(item.getName());
 
         viewHolder.nombre.setText(item.getName());
-
-
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -60,6 +62,11 @@ public class Adaptador_Evaluaciones extends RecyclerView.Adapter<Adaptador_Evalu
         }
 
 
+    }
+
+    public void addEvaluacion (Evaluacion evaluacion) {
+        evaluaciones.add(evaluacion);
+        this.notifyDataSetChanged();
     }
 
 }

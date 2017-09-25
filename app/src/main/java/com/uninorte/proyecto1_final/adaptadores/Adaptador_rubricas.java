@@ -20,7 +20,8 @@ public class Adaptador_rubricas extends RecyclerView.Adapter<Adaptador_rubricas.
 
     private List<Rubrica> rubricas;
 
-    public Adaptador_rubricas() { }
+    public Adaptador_rubricas() {
+    }
 
     public Adaptador_rubricas(List<Rubrica> rubricas) {
         this.rubricas = rubricas;
@@ -65,5 +66,9 @@ public class Adaptador_rubricas extends RecyclerView.Adapter<Adaptador_rubricas.
 
     }
 
+    public void addRubrica(Rubrica rubrica) {
+        rubricas.add(rubrica);
+        this.notifyDataSetChanged();
+    }
 
 }
