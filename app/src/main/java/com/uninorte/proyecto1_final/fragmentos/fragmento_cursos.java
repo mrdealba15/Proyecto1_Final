@@ -1,7 +1,5 @@
-package com.uninorte.proyecto1_final;
+package com.uninorte.proyecto1_final.fragmentos;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.uninorte.proyecto1_final.R;
+import com.uninorte.proyecto1_final.adaptadores.Adaptador_cursos;
+import com.uninorte.proyecto1_final.modelos.Curso;
+
+import java.util.List;
 
 
 public class fragmento_cursos extends Fragment {
@@ -30,7 +34,14 @@ public class fragmento_cursos extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         reciclador.setLayoutManager(layoutManager);
 
-        adaptador = new Adaptador_cursos();
+        Curso newC = new Curso();
+        newC.setName("Nuevo Curso");
+        newC.setNrc("K-25");
+        newC.save();
+
+        List<Curso> cursos = SQLite.select().from(Curso.class).queryList();
+        adaptador = new Adaptador_cursos(cursos);
+
         reciclador.setAdapter(adaptador);
         return view;
     }
