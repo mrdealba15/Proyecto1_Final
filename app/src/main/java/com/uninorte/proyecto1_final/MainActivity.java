@@ -1,7 +1,5 @@
 package com.uninorte.proyecto1_final;
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -15,32 +13,35 @@ import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-
-public class MainActivity extends AppCompatActivity{
-
-
-
-        private DrawerLayout drawerLayout;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-
-            agregarToolbar();
-
-            drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-            if (navigationView != null) {
-                prepararDrawer(navigationView);
-                // Seleccionar item por defecto
-                seleccionarItem(navigationView.getMenu().getItem(0));
-            }
+import com.uninorte.proyecto1_final.fragmentos.Fragmento_curso;
+import com.uninorte.proyecto1_final.fragmentos.Fragmento_rubricas;
+import com.uninorte.proyecto1_final.fragmentos.fragmento_cursos;
 
 
+public class MainActivity extends AppCompatActivity {
+
+    private DrawerLayout drawerLayout;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        agregarToolbar();
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        if (navigationView != null) {
+            prepararDrawer(navigationView);
+            // Seleccionar item por defecto
+            seleccionarItem(navigationView.getMenu().getItem(0));
         }
+
+
+    }
 
     private void prepararDrawer(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
@@ -56,7 +57,6 @@ public class MainActivity extends AppCompatActivity{
 
 
     }
-
 
 
     private void seleccionarItem(MenuItem itemDrawer) {
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    public void OnclickCurso(View view){
+    public void OnclickCurso(View view) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = new Fragmento_curso();
@@ -93,42 +93,33 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-
-
-
-        private void agregarToolbar() {
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            final ActionBar ab = getSupportActionBar();
-            if (ab != null) {
-                // Poner ícono del drawer toggle
-                ab.setHomeAsUpIndicator(R.drawable.drawer_toggle);
-                ab.setDisplayHomeAsUpEnabled(true);
-            }
-
+    private void agregarToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            // Poner ícono del drawer toggle
+            ab.setHomeAsUpIndicator(R.drawable.drawer_toggle);
+            ab.setDisplayHomeAsUpEnabled(true);
         }
 
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.menu_drawer, menu);
-            return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_drawer, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
         }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            switch (item.getItemId()) {
-                case android.R.id.home:
-                    drawerLayout.openDrawer(GravityCompat.START);
-                    return true;
-            }
-            return super.onOptionsItemSelected(item);
-        }
-
-
-
-
-
-
+        return super.onOptionsItemSelected(item);
+    }
 
 }
 
