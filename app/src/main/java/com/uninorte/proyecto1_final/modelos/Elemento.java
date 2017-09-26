@@ -39,7 +39,6 @@ public class Elemento extends BaseModel {
         this.L4 = L4;
         this.peso = Peso;
         this.categoria = categoria;
-
     }
 
     public float getPeso() {

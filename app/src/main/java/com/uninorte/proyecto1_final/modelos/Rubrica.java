@@ -6,9 +6,6 @@ import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 import com.uninorte.proyecto1_final.MyDatabase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Table(database = MyDatabase.class)
 public class Rubrica extends BaseModel {
 
@@ -25,7 +22,6 @@ public class Rubrica extends BaseModel {
     }
 
     public long getId() {
-
         return id;
     }
 

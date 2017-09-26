@@ -27,7 +27,6 @@ import com.uninorte.proyecto1_final.modelos.Rubrica_Table;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Fragmento_evaluaciones extends Fragment {
 
     private RecyclerView reciclador;
@@ -40,22 +39,18 @@ public class Fragmento_evaluaciones extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        long id = getArguments().getLong("id");
-        curso = SQLite.select().from(Curso.class).where(Curso_Table.id.eq(id)).querySingle();
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fragmento_evaluaciones, container, false);
 
-        reciclador = (RecyclerView) view.findViewById(R.id.reciclador_evaluaciones);
+        reciclador = view.findViewById(R.id.reciclador_evaluaciones);
         linearLayout = new LinearLayoutManager(getActivity());
         reciclador.setLayoutManager(linearLayout);
 
-        List<Evaluacion> evaluaciones = SQLite.select().from(Evaluacion.class).where(Evaluacion_Table.curso_id.eq(curso.getId())).queryList();
+        long id = getArguments().getLong("id");
+        curso = SQLite.select().from(Curso.class).where(Curso_Table.id.eq(id)).querySingle();
+
+        List<Evaluacion> evaluaciones = SQLite.select().from(Evaluacion.class).where(Evaluacion_Table.curso_id.eq(id)).queryList();
         adaptador = new Adaptador_Evaluaciones(evaluaciones);
         reciclador.setAdapter(adaptador);
 

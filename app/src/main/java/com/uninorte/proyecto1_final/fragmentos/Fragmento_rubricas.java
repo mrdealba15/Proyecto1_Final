@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AlertDialogLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,16 +13,13 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
-import com.uninorte.proyecto1_final.MainActivity;
 import com.uninorte.proyecto1_final.R;
-import com.uninorte.proyecto1_final.adaptadores.Adaptador_cursos;
 import com.uninorte.proyecto1_final.adaptadores.Adaptador_rubricas;
 import com.uninorte.proyecto1_final.modelos.Categoria;
 import com.uninorte.proyecto1_final.modelos.Elemento;
 import com.uninorte.proyecto1_final.modelos.Rubrica;
 
 import java.util.List;
-
 
 public class Fragmento_rubricas extends Fragment {
 
@@ -32,12 +28,6 @@ public class Fragmento_rubricas extends Fragment {
     private Adaptador_rubricas adaptador;
 
     public Fragmento_rubricas() {
-
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -45,15 +35,14 @@ public class Fragmento_rubricas extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fragmento_rubricas, container, false);
 
-        reciclador = (RecyclerView) view.findViewById(R.id.reciclador_rubricas);
+        reciclador = view.findViewById(R.id.reciclador_rubricas);
         linearLayout = new LinearLayoutManager(getActivity());
         reciclador.setLayoutManager(linearLayout);
 
         FloatingActionButton btn = view.findViewById(R.id.añadir_rubrica);
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View view){
+            public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 View mView = getLayoutInflater().inflate(R.layout.activity_crear_rubrica, null);
 
@@ -95,6 +84,7 @@ public class Fragmento_rubricas extends Fragment {
                     }
                 });
                 builder.setNegativeButton("Cancelar", null);
+
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
@@ -106,6 +96,4 @@ public class Fragmento_rubricas extends Fragment {
 
         return view;
     }
-
-
 }

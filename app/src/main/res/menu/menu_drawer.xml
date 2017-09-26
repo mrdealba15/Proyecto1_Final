@@ -9,7 +9,6 @@
         <item
             android:id="@+id/rubricas"
             android:title="Rubricas" />
-        <!--android:icon="@drawable/ic_book_black_24dp"-->
     </group>
 
 

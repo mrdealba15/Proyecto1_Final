@@ -12,16 +12,9 @@ import com.uninorte.proyecto1_final.modelos.Rubrica;
 
 import java.util.List;
 
-/**
- * Created by win 8.1 pro on 24/09/2017.
- */
-
 public class Adaptador_rubricas extends RecyclerView.Adapter<Adaptador_rubricas.ViewHolder> {
 
     private List<Rubrica> rubricas;
-
-    public Adaptador_rubricas() {
-    }
 
     public Adaptador_rubricas(List<Rubrica> rubricas) {
         this.rubricas = rubricas;
@@ -47,28 +40,30 @@ public class Adaptador_rubricas extends RecyclerView.Adapter<Adaptador_rubricas.
         viewHolder.nombre.setText(item.getName());
     }
 
+    public void addRubrica(Rubrica rubrica) {
+        rubricas.add(rubrica);
+        this.notifyDataSetChanged();
+    }
+
+    public void delRubrica(Rubrica rubrica) {
+        rubricas.remove(rubrica);
+        this.notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
         // Campos respectivos de un item
         public TextView nombre;
         public Button Editar;
         public Button Eliminar;
         public Button Ver;
 
-
         public ViewHolder(View v) {
             super(v);
-            nombre = (TextView) v.findViewById(R.id.rubrica_textView);
-            Editar = (Button) v.findViewById(R.id.editar);
-            Eliminar = (Button) v.findViewById(R.id.ver);
-            Ver = (Button) v.findViewById(R.id.eliminar);
+            nombre = v.findViewById(R.id.rubrica_textView);
+            Editar = v.findViewById(R.id.editar);
+            Eliminar = v.findViewById(R.id.ver);
+            Ver = v.findViewById(R.id.eliminar);
         }
-
-
     }
-
-    public void addRubrica(Rubrica rubrica) {
-        rubricas.add(rubrica);
-        this.notifyDataSetChanged();
-    }
-
 }

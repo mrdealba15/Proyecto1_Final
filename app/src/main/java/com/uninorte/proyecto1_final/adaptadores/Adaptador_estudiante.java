@@ -12,17 +12,9 @@ import com.uninorte.proyecto1_final.modelos.Estudiante;
 
 import java.util.List;
 
-/**
- * Created by win 8.1 pro on 24/09/2017.
- */
-
 public class Adaptador_estudiante extends RecyclerView.Adapter<Adaptador_estudiante.ViewHolder> {
 
     private List<Estudiante> estudiantes;
-
-
-    public Adaptador_estudiante() {
-    }
 
     public Adaptador_estudiante(List<Estudiante> estudiantes) {
         this.estudiantes = estudiantes;
@@ -46,34 +38,34 @@ public class Adaptador_estudiante extends RecyclerView.Adapter<Adaptador_estudia
         //Glide.with(viewHolder.itemView.getContext())
         //     .load(item.getName());
 
-
         viewHolder.inicial.setText(item.getName());
         viewHolder.nombre.setText(item.getCodigo());
+    }
 
+    public void addEstudiante(Estudiante estudiante) {
+        estudiantes.add(estudiante);
+        this.notifyDataSetChanged();
+    }
 
+    public void delEstudiante(Estudiante estudiante) {
+        estudiantes.remove(estudiante);
+        this.notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
         // Campos respectivos de un item
         public TextView inicial;
         public Button Delete;
         public TextView nombre;
         public Button evaluaciones;
 
-
         public ViewHolder(View v) {
             super(v);
-            inicial = (TextView) v.findViewById(R.id.initial);
-            Delete = (Button) v.findViewById(R.id.delete_button);
-            evaluaciones = (Button) v.findViewById(R.id.evaluation_botton);
-            nombre = (TextView) v.findViewById(R.id.name);
-
+            inicial = v.findViewById(R.id.initial);
+            Delete = v.findViewById(R.id.delete_button);
+            evaluaciones = v.findViewById(R.id.evaluation_botton);
+            nombre = v.findViewById(R.id.name);
         }
     }
-
-    public void addEstudiante (Estudiante estudiante) {
-        estudiantes.add(estudiante);
-        this.notifyDataSetChanged();
-    }
-
 }

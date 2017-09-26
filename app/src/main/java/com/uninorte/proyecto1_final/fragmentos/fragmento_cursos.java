@@ -19,7 +19,6 @@ import com.uninorte.proyecto1_final.modelos.Curso;
 
 import java.util.List;
 
-
 public class fragmento_cursos extends Fragment {
 
     private RecyclerView reciclador;
@@ -34,7 +33,7 @@ public class fragmento_cursos extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fragmento_cursos, container, false);
 
-        reciclador = (RecyclerView) view.findViewById(R.id.reciclador_cursos);
+        reciclador = view.findViewById(R.id.reciclador_cursos);
         layoutManager = new LinearLayoutManager(getActivity());
         reciclador.setLayoutManager(layoutManager);
 
@@ -47,8 +46,10 @@ public class fragmento_cursos extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 View mView = getLayoutInflater().inflate(R.layout.dialog_crear_curso, null);
+
                 final EditText etNombre = mView.findViewById(R.id.etNombreCurso);
                 final EditText etNrc = mView.findViewById(R.id.etNrcCurso);
+
                 builder.setView(mView);
                 builder.setPositiveButton("Crear", new DialogInterface.OnClickListener() {
                     @Override

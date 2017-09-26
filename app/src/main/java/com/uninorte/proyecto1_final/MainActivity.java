@@ -1,17 +1,17 @@
 package com.uninorte.proyecto1_final;
 
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,11 +19,9 @@ import com.uninorte.proyecto1_final.fragmentos.Fragmento_curso;
 import com.uninorte.proyecto1_final.fragmentos.Fragmento_rubricas;
 import com.uninorte.proyecto1_final.fragmentos.fragmento_cursos;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
         agregarToolbar();
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
         if (navigationView != null) {
             prepararDrawer(navigationView);
             // Seleccionar item por defecto
             seleccionarItem(navigationView.getMenu().getItem(0));
         }
-
-
     }
 
     private void prepararDrawer(NavigationView navigationView) {
@@ -56,10 +52,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-
-
     }
-
 
     private void seleccionarItem(MenuItem itemDrawer) {
         Fragment fragmentoGenerico = null;
@@ -72,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.rubricas:
                 fragmentoGenerico = new Fragmento_rubricas();
                 break;
-
         }
+
         if (fragmentoGenerico != null) {
             fragmentManager
                     .beginTransaction()
@@ -84,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         // Setear título actual
         setTitle(itemDrawer.getTitle());
     }
-
 
     public void OnclickCurso(View view) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -100,17 +92,16 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-
     private void agregarToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final ActionBar ab = getSupportActionBar();
+
         if (ab != null) {
             // Poner ícono del drawer toggle
             ab.setHomeAsUpIndicator(R.drawable.drawer_toggle);
             ab.setDisplayHomeAsUpEnabled(true);
         }
-
     }
 
     @Override
@@ -128,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
 
 

@@ -12,17 +12,9 @@ import com.uninorte.proyecto1_final.modelos.Evaluacion;
 
 import java.util.List;
 
-/**
- * Created by win 8.1 pro on 24/09/2017.
- */
-
 public class Adaptador_Evaluaciones extends RecyclerView.Adapter<Adaptador_Evaluaciones.ViewHolder> {
 
     private List<Evaluacion> evaluaciones;
-
-    public Adaptador_Evaluaciones() {
-
-    }
 
     public Adaptador_Evaluaciones(List<Evaluacion> evaluaciones) {
         this.evaluaciones = evaluaciones;
@@ -42,31 +34,32 @@ public class Adaptador_Evaluaciones extends RecyclerView.Adapter<Adaptador_Evalu
     public void onBindViewHolder(Adaptador_Evaluaciones.ViewHolder viewHolder, int i) {
         Evaluacion item = this.evaluaciones.get(i);
 
-
         //Glide.with(viewHolder.itemView.getContext())
         //     .load(item.getName());
 
         viewHolder.nombre.setText(item.getName());
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
-        public TextView nombre;
-        public Button Eliminar;
-
-
-        public ViewHolder(View v) {
-            super(v);
-            nombre = (TextView) v.findViewById(R.id.evaluaciones_textview);
-            Eliminar = (Button) v.findViewById(R.id.eliminar_evaluacion);
-        }
-
-
-    }
-
-    public void addEvaluacion (Evaluacion evaluacion) {
+    public void addEvaluacion(Evaluacion evaluacion) {
         evaluaciones.add(evaluacion);
         this.notifyDataSetChanged();
     }
 
+    public void delEvaluacion(Evaluacion evaluacion) {
+        evaluaciones.remove(evaluacion);
+        this.notifyDataSetChanged();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        // Campos respectivos de un item
+        public TextView nombre;
+        public Button Eliminar;
+
+        public ViewHolder(View v) {
+            super(v);
+            nombre = v.findViewById(R.id.evaluaciones_textview);
+            Eliminar = v.findViewById(R.id.eliminar_evaluacion);
+        }
+    }
 }

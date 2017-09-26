@@ -1,17 +1,16 @@
 package com.uninorte.proyecto1_final.fragmentos;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.graphics.Color;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.uninorte.proyecto1_final.R;
@@ -22,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fragmento_curso extends Fragment {
+
     private AppBarLayout appBar;
     private TabLayout pestanas;
     private ViewPager viewPager;
@@ -40,10 +40,9 @@ public class Fragmento_curso extends Fragment {
         if (savedInstanceState == null) {
             insertarTabs(container);
             // Setear adaptador al viewpager.
-            viewPager = (ViewPager) view.findViewById(R.id.pager);
+            viewPager = view.findViewById(R.id.pager);
             poblarViewPager(viewPager);
             pestanas.setupWithViewPager(viewPager);
-
         }
 
         return view;
@@ -65,8 +64,22 @@ public class Fragmento_curso extends Fragment {
         viewPager.setAdapter(adapter);
     }
 
+    private void insertarTabs(ViewGroup container) {
+        View padre = (View) container.getParent();
+        appBar = padre.findViewById(R.id.appbar);
+        pestanas = new TabLayout(getActivity());
+        pestanas.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
+        appBar.addView(pestanas);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        appBar.removeView(pestanas);
+    }
 
     public class AdaptadorSecciones extends FragmentStatePagerAdapter {
+
         private final List<Fragment> fragmentos = new ArrayList<>();
         private final List<String> titulosFragmentos = new ArrayList<>();
 
@@ -94,23 +107,5 @@ public class Fragmento_curso extends Fragment {
             return titulosFragmentos.get(position);
         }
     }
-
-
-    private void insertarTabs(ViewGroup container) {
-        View padre = (View) container.getParent();
-        appBar = (AppBarLayout) padre.findViewById(R.id.appbar);
-        pestanas = new TabLayout(getActivity());
-        pestanas.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
-        appBar.addView(pestanas);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        appBar.removeView(pestanas);
-    }
-
-
-
 }
 

@@ -24,23 +24,14 @@ import java.util.List;
 
 public class Fragmento_estudiantes extends Fragment {
 
-
-    RecyclerView reciclador;
-    private Adaptador_estudiante adaptador;
     private static int[] colors;
+    private RecyclerView reciclador;
+    private Adaptador_estudiante adaptador;
     private Curso curso;
-
     private LinearLayoutManager linearLayout;
 
     public Fragmento_estudiantes() {
 
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        long id = getArguments().getLong("id");
-        curso = SQLite.select().from(Curso.class).where(Curso_Table.id.eq(id)).querySingle();
     }
 
     @Override
@@ -50,11 +41,14 @@ public class Fragmento_estudiantes extends Fragment {
 
         colors = getResources().getIntArray(R.array.initial_colors);
 
-        reciclador = (RecyclerView)view.findViewById(R.id.reciclador);
+        reciclador = view.findViewById(R.id.reciclador);
         linearLayout = new LinearLayoutManager(getActivity());
         reciclador.setLayoutManager(linearLayout);
 
-        List<Estudiante> estudiantes = SQLite.select().from(Estudiante.class).where(Estudiante_Table.curso_id.eq(curso.getId())).queryList();
+        long id = getArguments().getLong("id");
+        curso = SQLite.select().from(Curso.class).where(Curso_Table.id.eq(id)).querySingle();
+
+        List<Estudiante> estudiantes = SQLite.select().from(Estudiante.class).where(Estudiante_Table.curso_id.eq(id)).queryList();
         adaptador = new Adaptador_estudiante(estudiantes);
         reciclador.setAdapter(adaptador);
 
@@ -88,8 +82,6 @@ public class Fragmento_estudiantes extends Fragment {
             }
         });
 
-
         return view;
     }
-
 }
