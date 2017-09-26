@@ -1,7 +1,5 @@
-package com.uninorte.proyecto1_final;
+package com.uninorte.proyecto1_final.fragmentos;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -13,10 +11,12 @@ import android.graphics.Color;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
+
+import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.uninorte.proyecto1_final.R;
+import com.uninorte.proyecto1_final.modelos.Curso;
+import com.uninorte.proyecto1_final.modelos.Curso_Table;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +25,7 @@ public class Fragmento_curso extends Fragment {
     private AppBarLayout appBar;
     private TabLayout pestanas;
     private ViewPager viewPager;
+    private Curso curso;
 
     public Fragmento_curso() {
     }
@@ -33,6 +34,8 @@ public class Fragmento_curso extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmento_paginado, container, false);
+        long id = getArguments().getLong("idCurso");
+        curso = SQLite.select().from(Curso.class).where(Curso_Table.id.eq(id)).querySingle();
 
         if (savedInstanceState == null) {
             insertarTabs(container);
@@ -41,8 +44,6 @@ public class Fragmento_curso extends Fragment {
             poblarViewPager(viewPager);
             pestanas.setupWithViewPager(viewPager);
 
-
-
         }
 
         return view;
@@ -50,8 +51,17 @@ public class Fragmento_curso extends Fragment {
 
     private void poblarViewPager(ViewPager viewPager) {
         AdaptadorSecciones adapter = new AdaptadorSecciones(getFragmentManager());
-        adapter.addFragment(new Fragmento_estudiantes(), "Estudiantes");
-        adapter.addFragment(new Fragmento_evaluaciones(), "Evaluaciones");
+
+        Fragmento_estudiantes fEstud = new Fragmento_estudiantes();
+        Fragmento_evaluaciones fEval = new Fragmento_evaluaciones();
+
+        Bundle bundle = new Bundle();
+        bundle.putLong("id", curso.getId());
+        fEstud.setArguments(bundle);
+        fEval.setArguments(bundle);
+
+        adapter.addFragment(fEstud, "Estudiantes");
+        adapter.addFragment(fEval, "Evaluaciones");
         viewPager.setAdapter(adapter);
     }
 

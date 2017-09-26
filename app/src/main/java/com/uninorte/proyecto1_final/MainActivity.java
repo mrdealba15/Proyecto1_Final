@@ -1,9 +1,8 @@
 package com.uninorte.proyecto1_final;
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
@@ -14,33 +13,37 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.TextView;
+
+import com.uninorte.proyecto1_final.fragmentos.Fragmento_curso;
+import com.uninorte.proyecto1_final.fragmentos.Fragmento_rubricas;
+import com.uninorte.proyecto1_final.fragmentos.fragmento_cursos;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
+
+    private DrawerLayout drawerLayout;
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        private DrawerLayout drawerLayout;
+        agregarToolbar();
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-            agregarToolbar();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-            drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-            if (navigationView != null) {
-                prepararDrawer(navigationView);
-                // Seleccionar item por defecto
-                seleccionarItem(navigationView.getMenu().getItem(0));
-            }
-
-
+        if (navigationView != null) {
+            prepararDrawer(navigationView);
+            // Seleccionar item por defecto
+            seleccionarItem(navigationView.getMenu().getItem(0));
         }
+
+
+    }
 
     private void prepararDrawer(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
@@ -56,7 +59,6 @@ public class MainActivity extends AppCompatActivity{
 
 
     }
-
 
 
     private void seleccionarItem(MenuItem itemDrawer) {
@@ -76,7 +78,6 @@ public class MainActivity extends AppCompatActivity{
             fragmentManager
                     .beginTransaction()
                     .replace(R.id.contenedor_principal, fragmentoGenerico)
-                    .addToBackStack(null)
                     .commit();
         }
 
@@ -84,89 +85,49 @@ public class MainActivity extends AppCompatActivity{
         setTitle(itemDrawer.getTitle());
     }
 
-    @Override
-    public void onBackPressed(){
-        int count = getSupportFragmentManager().getBackStackEntryCount();
 
-        if (count == 0){
-            super.onBackPressed();
-
-        } else{
-            getFragmentManager().popBackStack();
-        }
-    }
-
-
-
-    public void OnclickCurso(View view){
+    public void OnclickCurso(View view) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = new Fragmento_curso();
-        fragmentTransaction.replace(R.id.contenedor_principal, fragment).addToBackStack(null);
+
+        Bundle bundle = new Bundle();
+        TextView id = view.findViewById(R.id.id);
+        bundle.putLong("idCurso", Long.valueOf(id.getText().toString()));
+        fragment.setArguments(bundle);
+
+        fragmentTransaction.replace(R.id.contenedor_principal, fragment);
         fragmentTransaction.commit();
     }
 
-    public void onClickEvaluations(View view){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment fragment = new Fragmento_estudiante_evaluacion();
-        fragmentTransaction.replace(R.id.contenedor_principal, fragment).addToBackStack(null);
-        fragmentTransaction.commit();
-    }
 
-    public void OnclickEditar_rubrica(View view){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment fragment = new Fragmento_categorias();
-        fragmentTransaction.replace(R.id.contenedor_principal, fragment).addToBackStack(null);
-        fragmentTransaction.commit();
-    }
-
-    public void onClickElementos(View view){
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment fragment = new Fragmento_elementos();
-        fragmentTransaction.replace(R.id.contenedor_principal, fragment).addToBackStack(null);
-        fragmentTransaction.commit();
-
-    }
-
-
-
-        private void agregarToolbar() {
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            final ActionBar ab = getSupportActionBar();
-            if (ab != null) {
-                // Poner ícono del drawer toggle
-                ab.setHomeAsUpIndicator(R.drawable.drawer_toggle);
-                ab.setDisplayHomeAsUpEnabled(true);
-            }
-
+    private void agregarToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            // Poner ícono del drawer toggle
+            ab.setHomeAsUpIndicator(R.drawable.drawer_toggle);
+            ab.setDisplayHomeAsUpEnabled(true);
         }
 
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.menu_drawer, menu);
-            return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_drawer, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
         }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            switch (item.getItemId()) {
-                case android.R.id.home:
-                    drawerLayout.openDrawer(GravityCompat.START);
-                    return true;
-            }
-            return super.onOptionsItemSelected(item);
-        }
-
-
-
-
-
-
+        return super.onOptionsItemSelected(item);
+    }
 
 }
 

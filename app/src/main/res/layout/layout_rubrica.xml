@@ -13,7 +13,7 @@
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="409dp"
+        android:layout_height="169dp"
         android:background="@android:color/white"
         android:orientation="vertical"
         android:padding="@dimen/padding"
@@ -22,7 +22,7 @@
         <TextView
             android:id="@+id/rubrica_textView"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="85dp"
             android:gravity="center"
             android:textColor="@android:color/black"
             android:textSize="@dimen/initial_size"
@@ -37,26 +37,26 @@
 
             <Button
                 android:id="@+id/editar"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:onClick="OnclickEditar_rubrica"
                 android:text="Editar"
-                 />
+                android:layout_weight="0.33" />
 
             <Button
                 android:id="@+id/ver"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:onClick="OnclickVer_rubrica"
                 android:text="Ver"
-                />
+                android:layout_weight="0.33" />
             <Button
                 android:id="@+id/eliminar"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:onClick="OnclickEliminar_rubrica"
                 android:text="Eliminar"
-                />
+                android:layout_weight="0.33" />
         </LinearLayout>
 
     </LinearLayout>
