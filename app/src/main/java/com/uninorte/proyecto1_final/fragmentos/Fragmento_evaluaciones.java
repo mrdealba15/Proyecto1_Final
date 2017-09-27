@@ -30,12 +30,11 @@ import java.util.List;
 public class Fragmento_evaluaciones extends Fragment {
 
     private RecyclerView reciclador;
-    private LinearLayoutManager linearLayout;
+    private LinearLayoutManager layoutManager;
     private Adaptador_Evaluaciones adaptador;
     private Curso curso;
 
     public Fragmento_evaluaciones() {
-
     }
 
     @Override
@@ -43,9 +42,9 @@ public class Fragmento_evaluaciones extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fragmento_evaluaciones, container, false);
 
-        reciclador = view.findViewById(R.id.reciclador_evaluaciones);
-        linearLayout = new LinearLayoutManager(getActivity());
-        reciclador.setLayoutManager(linearLayout);
+        reciclador = (RecyclerView) view.findViewById(R.id.reciclador_evaluaciones);
+        layoutManager = new LinearLayoutManager(getActivity());
+        reciclador.setLayoutManager(layoutManager);
 
         long id = getArguments().getLong("id");
         curso = SQLite.select().from(Curso.class).where(Curso_Table.id.eq(id)).querySingle();
@@ -58,8 +57,7 @@ public class Fragmento_evaluaciones extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 View mView = getLayoutInflater().inflate(R.layout.activity_crear_evaluacion, null);
                 final EditText etNombre = mView.findViewById(R.id.editText);
                 final Spinner spRubrica = mView.findViewById(R.id.spinner);
