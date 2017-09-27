@@ -9,12 +9,18 @@ import android.widget.TextView;
 
 
 import com.uninorte.proyecto1_final.R;
+import com.uninorte.proyecto1_final.modelos.Categoria;
+
+import java.util.List;
 
 /**
  * Created by win 8.1 pro on 24/09/2017.
  */
 
 public class Adaptador_categorias extends RecyclerView.Adapter<Adaptador_categorias.ViewHolder> {
+
+    private List<Categoria> categorias;
+
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -40,7 +46,7 @@ public class Adaptador_categorias extends RecyclerView.Adapter<Adaptador_categor
 
 
     public int getItemCount() {
-        return Categoria.Categorias.size();
+        return this.categorias.size();
     }
 
     @Override
@@ -55,7 +61,7 @@ public class Adaptador_categorias extends RecyclerView.Adapter<Adaptador_categor
 
     @Override
     public void onBindViewHolder(Adaptador_categorias.ViewHolder viewHolder, int i) {
-        Categoria item = Categoria.Categorias.get(i);
+        Categoria item =this.categorias.get(i);
 
         //Glide.with(viewHolder.itemView.getContext())
         //     .load(item.getName());

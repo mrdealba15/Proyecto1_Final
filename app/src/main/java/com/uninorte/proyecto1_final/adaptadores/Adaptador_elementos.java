@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 
 import com.uninorte.proyecto1_final.R;
+import com.uninorte.proyecto1_final.modelos.Elemento;
+
+import java.util.List;
 
 /**
  * Created by win 8.1 pro on 24/09/2017.
@@ -16,6 +19,7 @@ import com.uninorte.proyecto1_final.R;
 
 public class Adaptador_elementos extends RecyclerView.Adapter<Adaptador_elementos.ViewHolder> {
 
+    private List<Elemento> elementos;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
@@ -40,7 +44,7 @@ public class Adaptador_elementos extends RecyclerView.Adapter<Adaptador_elemento
 
 
     public int getItemCount() {
-        return Elemento.Elementos.size();
+        return this.elementos.size();
     }
 
     @Override
@@ -55,7 +59,7 @@ public class Adaptador_elementos extends RecyclerView.Adapter<Adaptador_elemento
 
     @Override
     public void onBindViewHolder(Adaptador_elementos.ViewHolder viewHolder, int i) {
-        Elemento item = Elemento.Elementos.get(i);
+        Elemento item = this.elementos.get(i);
 
         //Glide.with(viewHolder.itemView.getContext())
         //     .load(item.getName());

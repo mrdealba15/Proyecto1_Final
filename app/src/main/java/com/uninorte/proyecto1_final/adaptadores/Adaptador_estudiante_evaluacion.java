@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 
 import com.uninorte.proyecto1_final.R;
+import com.uninorte.proyecto1_final.modelos.Evaluacion;
+
+import java.util.List;
 
 /**
  * Created by win 8.1 pro on 24/09/2017.
@@ -16,6 +19,8 @@ import com.uninorte.proyecto1_final.R;
 
 public class Adaptador_estudiante_evaluacion extends RecyclerView.Adapter<Adaptador_estudiante_evaluacion.ViewHolder> {
 
+
+    private List<Evaluacion> evaluaciones;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
@@ -39,7 +44,7 @@ public class Adaptador_estudiante_evaluacion extends RecyclerView.Adapter<Adapta
 
 
     public int getItemCount() {
-        return Evaluacion.Evaluaciones.size();
+        return this.evaluaciones.size();
     }
 
     @Override
@@ -54,7 +59,7 @@ public class Adaptador_estudiante_evaluacion extends RecyclerView.Adapter<Adapta
 
     @Override
     public void onBindViewHolder(Adaptador_estudiante_evaluacion.ViewHolder viewHolder, int i) {
-        Evaluacion item = Evaluacion.Evaluaciones.get(i);
+        Evaluacion item = this.evaluaciones.get(i);
 
         //Glide.with(viewHolder.nombre.getContext())
           //   .load(item.getName());
