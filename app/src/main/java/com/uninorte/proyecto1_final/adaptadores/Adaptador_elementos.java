@@ -40,6 +40,7 @@ public class Adaptador_elementos extends RecyclerView.Adapter<Adaptador_elemento
     }
 
     public Adaptador_elementos() {
+
     }
 
 

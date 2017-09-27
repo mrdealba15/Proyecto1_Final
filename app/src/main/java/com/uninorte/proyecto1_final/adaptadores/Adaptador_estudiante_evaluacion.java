@@ -27,7 +27,7 @@ public class Adaptador_estudiante_evaluacion extends RecyclerView.Adapter<Adapta
         public TextView nombre;
         public Button calificar;
         public Button ver;
-
+        private Evaluacion evaluacion;
 
         public ViewHolder(View v) {
             super(v);
@@ -39,7 +39,8 @@ public class Adaptador_estudiante_evaluacion extends RecyclerView.Adapter<Adapta
         }
     }
 
-    public Adaptador_estudiante_evaluacion() {
+    public Adaptador_estudiante_evaluacion(List<Evaluacion> evaluaciones) {
+            this.evaluaciones=evaluaciones;
     }
 
 

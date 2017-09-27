@@ -20,9 +20,7 @@ public class Adaptador_Evaluaciones extends RecyclerView.Adapter<Adaptador_Evalu
 
     private List<Evaluacion> evaluaciones;
 
-    public Adaptador_Evaluaciones() {
 
-    }
 
     public Adaptador_Evaluaciones(List<Evaluacion> evaluaciones) {
         this.evaluaciones = evaluaciones;
