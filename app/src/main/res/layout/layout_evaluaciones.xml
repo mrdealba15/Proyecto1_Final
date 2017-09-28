@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="3dp"
-    android:clickable="true"
+    android:clickable="false"
     android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical"
     card_view:cardCornerRadius="10dp">
@@ -34,13 +34,6 @@
             android:background="@android:color/white"
             android:orientation="horizontal"
             android:weightSum="1">
-
-            <Button
-                android:id="@+id/eliminar_evaluacion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/delete_button"
-                android:transitionName="delete_button_transition" />
 
         </LinearLayout>
 

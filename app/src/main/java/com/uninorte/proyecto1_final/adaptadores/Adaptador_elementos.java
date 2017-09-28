@@ -56,16 +56,14 @@ public class Adaptador_elementos extends RecyclerView.Adapter<Adaptador_elemento
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
         public TextView nombre;
-        public Button Delete;
         public TextView Peso;
-        public Button editar;
+        public TextView w;
 
         public ViewHolder(View v) {
             super(v);
             nombre = v.findViewById(R.id.elementos_textview);
-            Delete = v.findViewById(R.id.delete_elemento);
-            editar = v.findViewById(R.id.editar_elementos);
             Peso = v.findViewById(R.id.Peso);
+            w= v.findViewById(R.id.w);
         }
     }
 }

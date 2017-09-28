@@ -60,12 +60,14 @@ public class Adaptador_cursos extends RecyclerView.Adapter<Adaptador_cursos.View
         public TextView inicial;
         public TextView nombre;
         public TextView id;
+        public TextView NRC;
 
         public ViewHolder(View v) {
             super(v);
             inicial = v.findViewById(R.id.cursos_textView);
             nombre = v.findViewById(R.id.name_curso);
             id = v.findViewById(R.id.id);
+            NRC= v.findViewById(R.id.textView7);
         }
     }
 }

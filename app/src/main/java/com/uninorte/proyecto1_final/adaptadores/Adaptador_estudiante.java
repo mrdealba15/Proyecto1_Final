@@ -56,16 +56,14 @@ public class Adaptador_estudiante extends RecyclerView.Adapter<Adaptador_estudia
 
         // Campos respectivos de un item
         public TextView inicial;
-        public Button Delete;
         public TextView nombre;
-        public Button evaluaciones;
+        public TextView codigo;
 
         public ViewHolder(View v) {
             super(v);
             inicial = v.findViewById(R.id.initial);
-            Delete = v.findViewById(R.id.delete_button);
-            evaluaciones = v.findViewById(R.id.evaluation_botton);
             nombre = v.findViewById(R.id.name);
+            codigo= v.findViewById(R.id.codigo);
         }
     }
 }

@@ -57,17 +57,15 @@ public class Adaptador_categorias extends RecyclerView.Adapter<Adaptador_categor
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
         public TextView nombre;
-        public Button Delete;
         public TextView Peso;
-        public Button elementos;
         public TextView id;
+        public TextView Pes;
 
         public ViewHolder(View v) {
             super(v);
             nombre = v.findViewById(R.id.categorias_textview);
-            Delete = v.findViewById(R.id.delete_categoria);
-            elementos = v.findViewById(R.id.evaluation_botton);
             Peso = v.findViewById(R.id.Peso);
+            Pes= v.findViewById(R.id.Pes);
             id = v.findViewById(R.id.id);
         }
     }

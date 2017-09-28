@@ -53,13 +53,13 @@ public class Adaptador_Evaluaciones extends RecyclerView.Adapter<Adaptador_Evalu
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
         public TextView nombre;
-        public Button Eliminar;
+
 
 
         public ViewHolder(View v) {
             super(v);
             nombre = (TextView) v.findViewById(R.id.evaluaciones_textview);
-            Eliminar = (Button) v.findViewById(R.id.eliminar_evaluacion);
+
         }
     }
 }

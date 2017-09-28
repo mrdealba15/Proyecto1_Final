@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="3dp"
     android:clickable="true"
+    android:onClick="onClickElementos"
     android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical"
     card_view:cardCornerRadius="10dp">
@@ -35,12 +36,13 @@
             android:orientation="horizontal"
             android:weightSum="1">
 
-            <Button
-                android:id="@+id/delete_categoria"
+            <TextView
+                android:id="@+id/Pes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/delete_button"
-                android:transitionName="delete_button_transition" />
+                android:layout_weight="0.1"
+                android:text="PESO: " />
+
 
             <TextView
                 android:id="@+id/Peso"
@@ -51,21 +53,15 @@
                 android:textSize="@dimen/text_size"
                 android:transitionName="name_transition" />
 
-            <Button
-                android:id="@+id/elementos_botton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onClickElementos"
-                android:text="Elementos" />
-
-            <TextView
-                android:id="@+id/id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView"
-                android:visibility="gone" />
         </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:visibility="gone" />
 </android.support.v7.widget.CardView>

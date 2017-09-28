@@ -55,17 +55,11 @@ public class Adaptador_rubricas extends RecyclerView.Adapter<Adaptador_rubricas.
 
         // Campos respectivos de un item
         public TextView nombre;
-        public Button Editar;
-        public Button Eliminar;
-        public Button Ver;
         public TextView id;
 
         public ViewHolder(View v) {
             super(v);
             nombre = v.findViewById(R.id.rubrica_textView);
-            Editar = v.findViewById(R.id.editar);
-            Eliminar = v.findViewById(R.id.ver);
-            Ver = v.findViewById(R.id.eliminar);
             id = v.findViewById(R.id.id);
         }
     }

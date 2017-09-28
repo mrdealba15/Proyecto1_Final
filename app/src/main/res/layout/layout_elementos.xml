@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="3dp"
-    android:clickable="true"
+    android:clickable="false"
     android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical"
     card_view:cardCornerRadius="10dp">
@@ -35,12 +35,12 @@
             android:orientation="horizontal"
             android:weightSum="1">
 
-            <Button
-                android:id="@+id/delete_elemento"
+            <TextView
+                android:id="@+id/w"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/delete_button"
-                android:transitionName="delete_button_transition" />
+                android:layout_weight="0.1"
+                android:text="PESO: " />
 
             <TextView
                 android:id="@+id/Peso"
@@ -51,11 +51,6 @@
                 android:transitionName="name_transition"
                 android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/editar_elementos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Editar" />
         </LinearLayout>
 
     </LinearLayout>
