@@ -154,6 +154,25 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+
+
+    public void OnclickCalificar(View view){
+        //Al hacer click en la tarjeta del estudiante enviar a Fragmento_estudiante_evaluacion
+    }
+
+    public void CalificarEvaluacion(View view){
+        //Al hacer clic en el boton calificar de la evaluacion lo lleva a la categoria
+    }
+
+    public void onClickCategorias_estudiantes(View view){
+        // Al hacer clic en la tarjeta de categoria, lo lleva a calificar elementos
+
+
+    }
+
+    public void CalificarElemento(View view){
+        // Al hacer clic en la tarjeta del elemento sale el dialogo para seleccionar elemento y calificar.
+    }
 }
 
 
