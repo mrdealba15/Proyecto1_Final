@@ -43,6 +43,8 @@ public class Fragmento_curso extends Fragment {
             viewPager = view.findViewById(R.id.pager);
             poblarViewPager(viewPager);
             pestanas.setupWithViewPager(viewPager);
+        } else {
+
         }
 
         return view;

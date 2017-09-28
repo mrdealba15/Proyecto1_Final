@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -80,6 +79,20 @@ public class MainActivity extends AppCompatActivity {
         setTitle(itemDrawer.getTitle());
     }
 
+    public void replaceFragment(Fragment f) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.replace(R.id.contenedor_principal, f);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public void popFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.popBackStack();
+    }
+
     public void OnclickCurso(View view) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -105,12 +118,6 @@ public class MainActivity extends AppCompatActivity {
             ab.setHomeAsUpIndicator(R.drawable.drawer_toggle);
             ab.setDisplayHomeAsUpEnabled(true);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_drawer, menu);
-        return true;
     }
 
     @Override
@@ -153,25 +160,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.contenedor_principal, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-    }
-
-
-    public void OnclickCalificar(View view){
-        //Al hacer click en la tarjeta del estudiante enviar a Fragmento_estudiante_evaluacion
-    }
-
-    public void CalificarEvaluacion(View view){
-        //Al hacer clic en el boton calificar de la evaluacion lo lleva a la categoria
-    }
-
-    public void onClickCategorias_estudiantes(View view){
-        // Al hacer clic en la tarjeta de categoria, lo lleva a calificar elementos
-
-
-    }
-
-    public void CalificarElemento(View view){
-        // Al hacer clic en la tarjeta del elemento sale el dialogo para seleccionar elemento y calificar.
     }
 }
 

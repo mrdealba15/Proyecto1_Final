@@ -15,36 +15,29 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Seleccione elemento"
+        android:text="Seleccione el nivel"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
 
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rgroup"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <RadioButton android:id="@+id/L1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="L1"
-            android:onClick="onRadioButtonClicked"/>
+            android:layout_height="wrap_content" />
         <RadioButton android:id="@+id/L2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="L2"
-            android:onClick="onRadioButtonClicked"/>
+            android:layout_height="wrap_content" />
         <RadioButton android:id="@+id/L3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="L2"
-            android:onClick="onRadioButtonClicked"/>
+            android:layout_height="wrap_content" />
         <RadioButton android:id="@+id/L4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="L2"
-            android:onClick="onRadioButtonClicked"/>
+            android:layout_height="wrap_content" />
     </RadioGroup>
 
 </LinearLayout>

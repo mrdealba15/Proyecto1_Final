@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.uninorte.proyecto1_final.MainActivity;
 import com.uninorte.proyecto1_final.R;
 import com.uninorte.proyecto1_final.adaptadores.Adaptador_estudiante;
 import com.uninorte.proyecto1_final.modelos.Curso;
@@ -49,7 +50,7 @@ public class Fragmento_estudiantes extends Fragment {
         curso = SQLite.select().from(Curso.class).where(Curso_Table.id.eq(id)).querySingle();
 
         List<Estudiante> estudiantes = SQLite.select().from(Estudiante.class).where(Estudiante_Table.curso_id.eq(id)).queryList();
-        adaptador = new Adaptador_estudiante(estudiantes);
+        adaptador = new Adaptador_estudiante(estudiantes, curso, (MainActivity) getActivity());
         reciclador.setAdapter(adaptador);
 
         FloatingActionButton fab = view.findViewById(R.id.añadir_estudiante);
