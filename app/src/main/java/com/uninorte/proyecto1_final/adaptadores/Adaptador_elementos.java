@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 import com.uninorte.proyecto1_final.R;
 import com.uninorte.proyecto1_final.modelos.Elemento;
 
@@ -16,24 +15,6 @@ import java.util.List;
 public class Adaptador_elementos extends RecyclerView.Adapter<Adaptador_elementos.ViewHolder> {
 
     private List<Elemento> elementos;
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
-        public TextView nombre;
-        public Button Delete;
-        public TextView Peso;
-        public Button editar;
-
-
-        public ViewHolder(View v) {
-            super(v);
-            nombre = (TextView) v.findViewById(R.id.elementos_textview);
-            Delete = (Button) v.findViewById(R.id.delete_elemento);
-            editar = (Button) v.findViewById(R.id.editar_elementos);
-            Peso = (TextView) v.findViewById(R.id.Peso);
-
-        }
-    }
 
     public Adaptador_elementos(List<Elemento> elementos) {
         this.elementos = elementos;
@@ -61,9 +42,6 @@ public class Adaptador_elementos extends RecyclerView.Adapter<Adaptador_elemento
         return new Adaptador_elementos.ViewHolder(v);
     }
 
-
-
-
     @Override
     public void onBindViewHolder(Adaptador_elementos.ViewHolder viewHolder, int i) {
         Elemento item = this.elementos.get(i);
@@ -71,12 +49,23 @@ public class Adaptador_elementos extends RecyclerView.Adapter<Adaptador_elemento
         //Glide.with(viewHolder.itemView.getContext())
         //     .load(item.getName());
 
-
         viewHolder.nombre.setText(item.getName());
-        viewHolder.Peso.setText(item.getPeso()+"");
-
-
+        viewHolder.Peso.setText(String.valueOf(item.getPeso()));
     }
 
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        // Campos respectivos de un item
+        public TextView nombre;
+        public Button Delete;
+        public TextView Peso;
+        public Button editar;
 
+        public ViewHolder(View v) {
+            super(v);
+            nombre = v.findViewById(R.id.elementos_textview);
+            Delete = v.findViewById(R.id.delete_elemento);
+            editar = v.findViewById(R.id.editar_elementos);
+            Peso = v.findViewById(R.id.Peso);
+        }
+    }
 }

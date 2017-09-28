@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 import com.uninorte.proyecto1_final.R;
 import com.uninorte.proyecto1_final.modelos.Categoria;
 
@@ -17,30 +16,11 @@ public class Adaptador_categorias extends RecyclerView.Adapter<Adaptador_categor
 
     private List<Categoria> categorias;
 
-
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
-        public TextView nombre;
-        public Button Delete;
-        public TextView Peso;
-        public Button elementos;
-
-
-        public ViewHolder(View v) {
-            super(v);
-            nombre = (TextView) v.findViewById(R.id.categorias_textview);
-            Delete = (Button) v.findViewById(R.id.delete_categoria);
-            elementos = (Button) v.findViewById(R.id.evaluation_botton);
-            Peso = (TextView) v.findViewById(R.id.Peso);
-
-        }
+    public Adaptador_categorias(List<Categoria> categorias) {
+        this.categorias = categorias;
     }
 
-    public Adaptador_categorias() {
-    }
-
-
+    @Override
     public int getItemCount() {
         return this.categorias.size();
     }
@@ -56,28 +36,37 @@ public class Adaptador_categorias extends RecyclerView.Adapter<Adaptador_categor
     }
 
     @Override
-    public Adaptador_categorias.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.layout_categorias, viewGroup, false);
         return new Adaptador_categorias.ViewHolder(v);
     }
 
-
-
-
     @Override
-    public void onBindViewHolder(Adaptador_categorias.ViewHolder viewHolder, int i) {
-        Categoria item =this.categorias.get(i);
+    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+        Categoria item = this.categorias.get(i);
 
         //Glide.with(viewHolder.itemView.getContext())
         //     .load(item.getName());
 
-
         viewHolder.nombre.setText(item.getName());
-        viewHolder.Peso.setText(item.getPeso()+"");
-
-
+        viewHolder.Peso.setText(String.valueOf(item.getPeso()));
     }
 
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        // Campos respectivos de un item
+        public TextView nombre;
+        public Button Delete;
+        public TextView Peso;
+        public Button elementos;
 
+
+        public ViewHolder(View v) {
+            super(v);
+            nombre = v.findViewById(R.id.categorias_textview);
+            Delete = v.findViewById(R.id.delete_categoria);
+            elementos = v.findViewById(R.id.evaluation_botton);
+            Peso = v.findViewById(R.id.Peso);
+        }
+    }
 }

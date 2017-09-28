@@ -7,20 +7,50 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 import com.uninorte.proyecto1_final.R;
 import com.uninorte.proyecto1_final.modelos.Evaluacion;
 
 import java.util.List;
 
-/**
- * Created by win 8.1 pro on 24/09/2017.
- */
-
 public class Adaptador_estudiante_evaluacion extends RecyclerView.Adapter<Adaptador_estudiante_evaluacion.ViewHolder> {
 
-
     private List<Evaluacion> evaluaciones;
+
+    public Adaptador_estudiante_evaluacion(List<Evaluacion> evaluaciones) {
+        this.evaluaciones = evaluaciones;
+    }
+
+    public void addEvaluacion(Evaluacion evaluacion) {
+        evaluaciones.add(evaluacion);
+        this.notifyDataSetChanged();
+    }
+
+    public void delEvaluacion(Evaluacion evaluacion) {
+        evaluaciones.remove(evaluacion);
+        this.notifyDataSetChanged();
+    }
+
+    @Override
+    public int getItemCount() {
+        return this.evaluaciones.size();
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.layout_evaluaciones_estudiantes, viewGroup, false);
+        return new Adaptador_estudiante_evaluacion.ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+        Evaluacion item = this.evaluaciones.get(i);
+
+        //Glide.with(viewHolder.nombre.getContext())
+        //   .load(item.getName());
+
+        viewHolder.nombre.setText(item.getName());
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
@@ -31,46 +61,9 @@ public class Adaptador_estudiante_evaluacion extends RecyclerView.Adapter<Adapta
 
         public ViewHolder(View v) {
             super(v);
-            nombre = (TextView) v.findViewById(R.id.estudiante_eval_textview);
-            calificar = (Button) v.findViewById(R.id.calificar_button);
-            ver = (Button) v.findViewById(R.id.ver_button);
-
-
+            nombre = v.findViewById(R.id.estudiante_eval_textview);
+            calificar = v.findViewById(R.id.calificar_button);
+            ver = v.findViewById(R.id.ver_button);
         }
     }
-
-    public Adaptador_estudiante_evaluacion(List<Evaluacion> evaluaciones) {
-            this.evaluaciones=evaluaciones;
-    }
-
-
-    public int getItemCount() {
-        return this.evaluaciones.size();
-    }
-
-    @Override
-    public Adaptador_estudiante_evaluacion.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.layout_evaluaciones_estudiantes, viewGroup, false);
-        return new Adaptador_estudiante_evaluacion.ViewHolder(v);
-    }
-
-
-
-
-    @Override
-    public void onBindViewHolder(Adaptador_estudiante_evaluacion.ViewHolder viewHolder, int i) {
-        Evaluacion item = this.evaluaciones.get(i);
-
-        //Glide.with(viewHolder.nombre.getContext())
-          //   .load(item.getName());
-
-
-
-        viewHolder.nombre.setText(item.getName());
-
-
-    }
-
-
 }

@@ -1,6 +1,5 @@
 package com.uninorte.proyecto1_final.modelos;
 
-
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
