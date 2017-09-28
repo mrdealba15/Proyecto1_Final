@@ -46,10 +46,10 @@
                 android:id="@+id/Peso"
                 android:layout_width="138dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/text_size"
-                android:transitionName="name_transition"
-                android:layout_weight="1" />
+                android:transitionName="name_transition" />
 
             <Button
                 android:id="@+id/elementos_botton"
@@ -57,6 +57,14 @@
                 android:layout_height="wrap_content"
                 android:onClick="onClickElementos"
                 android:text="Elementos" />
+
+            <TextView
+                android:id="@+id/id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:visibility="gone" />
         </LinearLayout>
 
     </LinearLayout>

@@ -10,7 +10,10 @@ import com.uninorte.proyecto1_final.MyDatabase;
 @Table(database = MyDatabase.class)
 public class Elemento extends BaseModel {
 
-    @PrimaryKey
+    @PrimaryKey(autoincrement = true)
+    private long id;
+
+    @Column
     private String name;
 
     @Column
@@ -39,6 +42,14 @@ public class Elemento extends BaseModel {
         this.L4 = L4;
         this.peso = Peso;
         this.categoria = categoria;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public float getPeso() {

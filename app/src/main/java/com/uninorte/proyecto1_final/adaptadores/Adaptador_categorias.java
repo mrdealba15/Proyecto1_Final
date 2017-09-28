@@ -51,6 +51,7 @@ public class Adaptador_categorias extends RecyclerView.Adapter<Adaptador_categor
 
         viewHolder.nombre.setText(item.getName());
         viewHolder.Peso.setText(String.valueOf(item.getPeso()));
+        viewHolder.id.setText((String.valueOf(item.getId())));
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -59,7 +60,7 @@ public class Adaptador_categorias extends RecyclerView.Adapter<Adaptador_categor
         public Button Delete;
         public TextView Peso;
         public Button elementos;
-
+        public TextView id;
 
         public ViewHolder(View v) {
             super(v);
@@ -67,6 +68,7 @@ public class Adaptador_categorias extends RecyclerView.Adapter<Adaptador_categor
             Delete = v.findViewById(R.id.delete_categoria);
             elementos = v.findViewById(R.id.evaluation_botton);
             Peso = v.findViewById(R.id.Peso);
+            id = v.findViewById(R.id.id);
         }
     }
 }

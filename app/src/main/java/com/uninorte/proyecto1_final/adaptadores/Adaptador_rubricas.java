@@ -38,6 +38,7 @@ public class Adaptador_rubricas extends RecyclerView.Adapter<Adaptador_rubricas.
         //     .load(item.getName());
 
         viewHolder.nombre.setText(item.getName());
+        viewHolder.id.setText((String.valueOf(item.getId())));
     }
 
     public void addRubrica(Rubrica rubrica) {
@@ -57,6 +58,7 @@ public class Adaptador_rubricas extends RecyclerView.Adapter<Adaptador_rubricas.
         public Button Editar;
         public Button Eliminar;
         public Button Ver;
+        public TextView id;
 
         public ViewHolder(View v) {
             super(v);
@@ -64,6 +66,7 @@ public class Adaptador_rubricas extends RecyclerView.Adapter<Adaptador_rubricas.
             Editar = v.findViewById(R.id.editar);
             Eliminar = v.findViewById(R.id.ver);
             Ver = v.findViewById(R.id.eliminar);
+            id = v.findViewById(R.id.id);
         }
     }
 }

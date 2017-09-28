@@ -15,7 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.uninorte.proyecto1_final.fragmentos.Fragmento_categorias;
 import com.uninorte.proyecto1_final.fragmentos.Fragmento_curso;
+import com.uninorte.proyecto1_final.fragmentos.Fragmento_elementos;
 import com.uninorte.proyecto1_final.fragmentos.Fragmento_rubricas;
 import com.uninorte.proyecto1_final.fragmentos.fragmento_cursos;
 
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         fragment.setArguments(bundle);
 
         fragmentTransaction.replace(R.id.contenedor_principal, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
@@ -118,6 +121,38 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void OnclickEditar_rubrica(View view) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment = new Fragmento_categorias();
+
+        Bundle bundle = new Bundle();
+        View parent = (View) view.getParent();
+        TextView id = parent.findViewById(R.id.id);
+        bundle.putLong("id", Long.valueOf(id.getText().toString()));
+        fragment.setArguments(bundle);
+
+        fragmentTransaction.replace(R.id.contenedor_principal, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public void onClickElementos(View view) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment = new Fragmento_elementos();
+
+        Bundle bundle = new Bundle();
+        View parent = (View) view.getParent();
+        TextView id = parent.findViewById(R.id.id);
+        bundle.putLong("id", Long.valueOf(id.getText().toString()));
+        fragment.setArguments(bundle);
+
+        fragmentTransaction.replace(R.id.contenedor_principal, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
 
