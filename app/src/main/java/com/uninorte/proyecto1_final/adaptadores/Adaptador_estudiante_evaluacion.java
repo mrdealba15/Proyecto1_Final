@@ -56,14 +56,13 @@ public class Adaptador_estudiante_evaluacion extends RecyclerView.Adapter<Adapta
         // Campos respectivos de un item
         public TextView nombre;
         public Button calificar;
-        public Button ver;
+
         private Evaluacion evaluacion;
 
         public ViewHolder(View v) {
             super(v);
             nombre = v.findViewById(R.id.estudiante_eval_textview);
             calificar = v.findViewById(R.id.calificar_button);
-            ver = v.findViewById(R.id.ver_button);
         }
     }
 }
