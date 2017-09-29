@@ -48,8 +48,8 @@ public class Fragmento_elemento_estudiante extends Fragment {
         long idEstudiante = getArguments().getLong("idEstudiante");
         long idEvaluacion = getArguments().getLong("idEvaluacion");
         categoria = SQLite.select().from(Categoria.class).where(Categoria_Table.id.eq(idCategoria)).querySingle();
-        evaluacion = SQLite.select().from(Evaluacion.class).where(Evaluacion_Table.id.eq(idEstudiante)).querySingle();
-        estudiante = SQLite.select().from(Estudiante.class).where(Estudiante_Table.id.eq(idEvaluacion)).querySingle();
+        evaluacion = SQLite.select().from(Evaluacion.class).where(Evaluacion_Table.id.eq(idEvaluacion)).querySingle();
+        estudiante = SQLite.select().from(Estudiante.class).where(Estudiante_Table.id.eq(idEstudiante)).querySingle();
 
         List<Elemento> elementos = SQLite.select().from(Elemento.class).where(Elemento_Table.categoria_id.eq(idCategoria)).queryList();
         adaptador = new Adaptador_elemento_estudiante(elementos, estudiante, evaluacion, categoria, (MainActivity) getActivity(), getContext());

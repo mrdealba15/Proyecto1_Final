@@ -44,7 +44,9 @@ public class Fragmento_estudiante_evaluacion extends Fragment {
         estudiante = SQLite.select().from(Estudiante.class).where(Estudiante_Table.id.eq(id)).querySingle();
         curso = estudiante.getCurso();
 
-        List<Evaluacion> evaluaciones = SQLite.select().from(Evaluacion.class).where(Evaluacion_Table.curso_id.eq(id)).queryList();
+        List<Evaluacion> evaluaciones = SQLite.select().from(Evaluacion.class)
+                .where(Evaluacion_Table.curso_id.eq(curso.getId()))
+                .queryList();
         adaptador = new Adaptador_estudiante_evaluacion(evaluaciones, estudiante, curso, (MainActivity) getActivity());
         reciclador.setAdapter(adaptador);
 

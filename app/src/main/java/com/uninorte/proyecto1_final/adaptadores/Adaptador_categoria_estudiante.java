@@ -52,7 +52,6 @@ public class Adaptador_categoria_estudiante extends RecyclerView.Adapter<Adaptad
 
         viewHolder.nombre.setText(item.getName());
         viewHolder.Peso.setText(String.valueOf(item.getPeso()));
-        viewHolder.id.setText((String.valueOf(item.getId())));
 
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +73,6 @@ public class Adaptador_categoria_estudiante extends RecyclerView.Adapter<Adaptad
         // Campos respectivos de un item
         public TextView nombre;
         public TextView Peso;
-        public TextView id;
         public TextView Pes;
         public CardView cardView;
 
@@ -83,7 +81,6 @@ public class Adaptador_categoria_estudiante extends RecyclerView.Adapter<Adaptad
             nombre = v.findViewById(R.id.categorias_textview);
             Peso = v.findViewById(R.id.Peso);
             Pes= v.findViewById(R.id.Pes);
-            id = v.findViewById(R.id.id);
             cardView = v.findViewById(R.id.card_layout);
         }
     }

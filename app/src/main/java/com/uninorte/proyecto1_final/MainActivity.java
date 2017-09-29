@@ -136,8 +136,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = new Fragmento_categorias();
 
         Bundle bundle = new Bundle();
-        View parent = (View) view.getParent();
-        TextView id = parent.findViewById(R.id.id);
+        TextView id = view.findViewById(R.id.id);
         bundle.putLong("id", Long.valueOf(id.getText().toString()));
         fragment.setArguments(bundle);
 
@@ -152,8 +151,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = new Fragmento_elementos();
 
         Bundle bundle = new Bundle();
-        View parent = (View) view.getParent();
-        TextView id = parent.findViewById(R.id.id);
+        TextView id = view.findViewById(R.id.id);
         bundle.putLong("id", Long.valueOf(id.getText().toString()));
         fragment.setArguments(bundle);
 

@@ -68,7 +68,7 @@ public class CalRubrica extends BaseModel {
         float n = 0;
         for (CalCategoria calCategoria :
                 calCategorias) {
-            n += calCategoria.getNota() * calCategoria.getCategoria().getPeso();
+            n += calCategoria.getNota() * calCategoria.getCategoria().getPeso() / 100;
         }
         setNota(n);
         save();

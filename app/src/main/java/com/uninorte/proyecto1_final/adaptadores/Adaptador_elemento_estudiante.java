@@ -13,8 +13,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.uninorte.proyecto1_final.MainActivity;
 import com.uninorte.proyecto1_final.R;
+import com.uninorte.proyecto1_final.modelos.CalCategoria;
+import com.uninorte.proyecto1_final.modelos.CalCategoria_Table;
+import com.uninorte.proyecto1_final.modelos.CalElemento;
+import com.uninorte.proyecto1_final.modelos.CalElemento_Table;
+import com.uninorte.proyecto1_final.modelos.CalRubrica;
+import com.uninorte.proyecto1_final.modelos.CalRubrica_Table;
 import com.uninorte.proyecto1_final.modelos.Categoria;
 import com.uninorte.proyecto1_final.modelos.Elemento;
 import com.uninorte.proyecto1_final.modelos.Estudiante;
@@ -82,24 +89,86 @@ public class Adaptador_elemento_estudiante extends RecyclerView.Adapter<Adaptado
                 builder.setPositiveButton("Calificar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //TODO: Calificar!
+                        boolean sw = true;
+                        //Verificar existencia/crear de CalRubrica
+                        CalRubrica calRubrica = SQLite.select().from(CalRubrica.class)
+                                .where(CalRubrica_Table.estudiante_id.eq(estudiante.getId()),
+                                        CalRubrica_Table.evaluacion_id.eq(evaluacion.getId()))
+                                .querySingle();
+
+                        if (calRubrica == null) {
+                            calRubrica = new CalRubrica();
+                            calRubrica.setEstudiante(estudiante);
+                            calRubrica.setEvaluacion(evaluacion);
+                            calRubrica.setNota(0);
+                            calRubrica.save();
+                            sw = false;
+                        }
+
+                        //Verificar existencia/crear CalCategoria
+                        CalCategoria calCategoria = null;
+                        if (sw) {
+                            calCategoria = SQLite.select().from(CalCategoria.class)
+                                    .where(CalCategoria_Table.calRubrica_id.eq(calRubrica.getId()),
+                                            CalCategoria_Table.categoria_id.eq(categoria.getId()))
+                                    .querySingle();
+
+                            sw = calCategoria != null;
+                        }
+
+                        if (!sw) {
+                            calCategoria = new CalCategoria();
+                            calCategoria.setCalRubrica(calRubrica);
+                            calCategoria.setCategoria(categoria);
+                            calCategoria.setNota(0);
+                            calCategoria.save();
+                        }
+
+                        //Verificar existencia/crear CalElemento
+                        CalElemento calElemento = null;
+                        if (sw) {
+                            calElemento = SQLite.select().from(CalElemento.class)
+                                    .where(CalElemento_Table.calCategoria_id.eq(calCategoria.getId()),
+                                            CalElemento_Table.elemento_id.eq(item.getId()))
+                                    .querySingle();
+
+                            sw = calElemento != null;
+                        }
+
+                        if (!sw) {
+                            calElemento = new CalElemento();
+                            calElemento.setCalCategoria(calCategoria);
+                            calElemento.setElemento(item);
+                            calElemento.setNota(0);
+                        }
 
                         switch (radioGroup.getCheckedRadioButtonId()) {
                             case R.id.L1:
                                 Log.d("TAG", "L1");
+                                calElemento.setNota(5f);
                                 break;
                             case R.id.L2:
                                 Log.d("TAG", "L2");
+                                calElemento.setNota(3.75f);
                                 break;
                             case R.id.L3:
                                 Log.d("TAG", "L3");
+                                calElemento.setNota(2.5f);
                                 break;
                             case R.id.L4:
                                 Log.d("TAG", "L4");
+                                calElemento.setNota(1.25f);
                                 break;
-                            default:
-                                return;
                         }
+
+                        calElemento.save();
+                        calCategoria.updateNota();
+                        calRubrica.updateNota();
+
+                        Log.d("TAG", "El " + item.getName() + ": " + calElemento.getNota());
+                        Log.d("TAG", "Cat " + categoria.getName() + ": " + calCategoria.getNota());
+                        Log.d("TAG", "Eval " + evaluacion.getName() + ": " + calRubrica.getNota());
+
                         if (getItemCount() == 1)
                             mainActivity.popFragment();
                     }

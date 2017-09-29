@@ -68,7 +68,7 @@ public class CalCategoria extends BaseModel {
         float n = 0;
         for (CalElemento el :
                 calElementos) {
-            n += el.getNota() * el.getElemento().getPeso();
+            n += el.getNota() * el.getElemento().getPeso() / 100;
         }
         setNota(n);
         save();
