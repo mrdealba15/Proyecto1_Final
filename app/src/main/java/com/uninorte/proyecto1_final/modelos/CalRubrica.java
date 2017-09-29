@@ -4,8 +4,11 @@ import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.ForeignKey;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 import com.uninorte.proyecto1_final.MyDatabase;
+
+import java.util.List;
 
 @Table(database = MyDatabase.class)
 public class CalRubrica extends BaseModel {
@@ -14,7 +17,7 @@ public class CalRubrica extends BaseModel {
     private long id;
 
     @Column
-    private float calificacion;
+    private float nota;
 
     @ForeignKey
     private Estudiante estudiante;
@@ -33,12 +36,12 @@ public class CalRubrica extends BaseModel {
         this.id = id;
     }
 
-    public float getCalificacion() {
-        return calificacion;
+    public float getNota() {
+        return nota;
     }
 
-    public void setCalificacion(float calificacion) {
-        this.calificacion = calificacion;
+    public void setNota(float nota) {
+        this.nota = nota;
     }
 
     public Estudiante getEstudiante() {
@@ -55,5 +58,19 @@ public class CalRubrica extends BaseModel {
 
     public void setEvaluacion(Evaluacion evaluacion) {
         this.evaluacion = evaluacion;
+    }
+
+    public void updateNota() {
+        List<CalCategoria> calCategorias = SQLite.select().from(CalCategoria.class)
+                .where(CalCategoria_Table.calRubrica_id.eq(getId()))
+                .queryList();
+
+        float n = 0;
+        for (CalCategoria calCategoria :
+                calCategorias) {
+            n += calCategoria.getNota() * calCategoria.getCategoria().getPeso();
+        }
+        setNota(n);
+        save();
     }
 }
